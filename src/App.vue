@@ -1,11 +1,20 @@
 <template>
   <HeaderComponent  @change-value="getBoth"/>
-  <main>
+  <main>  
     <h2 >Movies</h2>
-    <div v-for="movie in store.movieList">{{ movie.title }} {{ movie.orginal_title }} {{ movie.vote_average }} {{ movie.original_language }}</div>
+    <div 
+    v-for="movie in store.movieList">{{ movie.title }} {{ movie.orginal_title }} {{ movie.vote_average }} {{ movie.original_language }}
+    <img :src="'https://flagsapi.com/'+movie.original_language.toUpperCase().substring(0,2)+ '/shiny/64.png'" >
+    
+    </div>
     <h2>Series</h2>
-    <div v-for="serie in store.seriesList">{{ serie.name }}{{ serie.orginal_title }}{{ serie.vote_average }}{{ serie.original_language }}</div>
+    <div v-for="serie in store.seriesList">{{ serie.name }}{{ serie.orginal_title }}{{ serie.vote_average }}{{ serie.original_language }}
+      <img :src="'https://flagsapi.com/'+serie.original_language.toUpperCase().substring(0,2)+ '/shiny/64.png'" >
+    
+    </div>
+    <div>
 
+    </div>
   </main>
 </template>
 
@@ -40,11 +49,14 @@ import HeaderComponent from './components/HeaderComponent.vue';
       getBoth(){
         this.getMovies()
         this.getSeries()
-      }
+      },
+      
     },
     created(){
       this.getMovies(),
       this.getSeries()
+    },
+    computed(){
     }
 }
 </script>
