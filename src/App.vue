@@ -10,10 +10,9 @@
     </div>
     <h2>Series</h2>
     <div v-for="serie in store.seriesList">{{ serie.name }} {{ serie.orginal_title }} {{ serie.vote_average }} {{ serie.original_language }}
-      <img :src="store.imgUrl+serie.poster_path" :alt="serie.title">
-
-      <img :src="'https://flagsapi.com/'+serie.original_language.toUpperCase().substring(0,2)+ '/shiny/64.png'" >
-    
+    <img :src="store.imgUrl+serie.poster_path" :alt="serie.title">
+    <img :src="'https://flagsapi.com/'+serie.original_language.toUpperCase().substring(0,2)+ '/shiny/64.png'" >
+    <i v-for="star in voteStars(serie)" class="fa-solid fa-star"></i>
     </div>
     <div>
 
@@ -54,8 +53,8 @@ import HeaderComponent from './components/HeaderComponent.vue';
         this.getSeries()
       },
       voteStars(movie){
-        Math.ceil(movie.vote_average / 2)
-        console.log();
+         return Math.ceil(movie.vote_average / 2)
+        
       }
       
     },
