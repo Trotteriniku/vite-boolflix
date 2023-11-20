@@ -1,13 +1,17 @@
 <template>
   <HeaderComponent  @change-value="getBoth"/>
+    <HeroComponent/>
+    <CardListComponent/>
+ 
+  
   <main>  
     <h2 >Movies</h2>
-    <div 
+    <!-- <div 
     v-for="movie in store.movieList">{{ movie.title }} {{ movie.orginal_title }} {{ movie.vote_average }} {{ movie.original_language }}
     <img :src="store.imgUrl+movie.poster_path" :alt="movie.title">
     <img :src="'https://flagsapi.com/'+movie.original_language.toUpperCase().substring(0,2)+ '/shiny/64.png'" >
     <i v-for="star in voteStars(movie)" class="fa-solid fa-star"></i>
-    </div>
+    </div> -->
     <h2>Series</h2>
     <div v-for="serie in store.seriesList">{{ serie.name }} {{ serie.orginal_title }} {{ serie.vote_average }} {{ serie.original_language }}
     <img :src="store.imgUrl+serie.poster_path" :alt="serie.title">
@@ -24,11 +28,17 @@
 import axios from 'axios'
 import { store } from './data/store';
 import HeaderComponent from './components/HeaderComponent.vue';
+import CardListComponent from './components/CardListComponent.vue';
+import HeroComponent from './components/HeroComponent.vue';
 
 
   export default {
     name: "App",
-    components: { HeaderComponent },
+    components: {
+       HeaderComponent,
+       CardListComponent,
+        HeroComponent
+       },
     data(){
       return{
         store
@@ -46,6 +56,9 @@ import HeaderComponent from './components/HeaderComponent.vue';
           store.seriesList= response.data.results
           console.log(store.seriesList);
         })
+      },
+      getMSPhoto(){
+
       },
 
       getBoth(){
@@ -70,5 +83,5 @@ import HeaderComponent from './components/HeaderComponent.vue';
 </script>
 
 <style lang="scss" scoped>
-
+ 
 </style>

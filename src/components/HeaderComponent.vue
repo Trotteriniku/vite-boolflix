@@ -1,8 +1,8 @@
 <template>
     <header class=" px-5 py-3 d-flex justify-content-between align-items-center position-sticky">
         <img src="../assets/images/BOOLFIXIMG.png" alt="boolflix logo" style="width: 110px;">
-        <i class="fa-solid fa-search text-light fs-5 d-inline-block" v-if="!barExpand" @click="barExpand= true"></i>
-        <div class="border border-light p-1 " v-if="barExpand" style="max-width: 260px; min-width: 260px;" >
+        <i class="fa-solid fa-search text-light fs-5 d-inline-block" v-if="!barExpand" @click="barExpand= false"></i>
+        <div class="border border-light p-1 " style="max-width: 260px; min-width: 260px;" >
         <i class="fa-solid fa-search text-light fs-5  d-inline-block " @click="barExpand= false"></i>
 
         <input type="text" class="ps-3 align-baseline  border-0 text-secondary" id="searchinput" v-model="data" @keyup.enter="getParams()" placeholder="Titoli,persone,generi">
@@ -17,7 +17,7 @@ import { store  } from '../data/store';
         name:'HeaderComponent',
         data(){
             return{
-                barExpand: false,
+                barExpand: true,
                 data:'',
                 store
             }
@@ -41,7 +41,8 @@ import { store  } from '../data/store';
         // background-color: #222222;
         background-color: transparent;
         height: 68px;
-        background-image: linear-gradient(180deg,rgba(0,0,0,.7) 10%,transparent);
+        // background-image: linear-gradient(180deg,rgba(0,0,0,.7) 10%,transparent);
+        background-color: #222222;
 
         div{
             background-color: #2222226a;
